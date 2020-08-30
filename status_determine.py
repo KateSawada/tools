@@ -5,6 +5,14 @@ from PIL import Image, ImageTk
 import json
 import collections as cl
 
+"""
+    使い方
+    画像と同じフォルダにこれを入れる
+    実行
+    ステータスを順に割り振る
+    最後まで行くと自動で終了or終了ボタンで終了
+    JSONが生成されている
+"""
 
 
 
@@ -58,6 +66,37 @@ class Application(tk.Frame):
         self.roundness_entry.focus_set()
         
     def enter_callback(self, event):
+        try:
+            int(self.roundness_entry.get())
+        except:
+            #クリア
+            self.sharpness_entry.delete(0, tk.END)
+            self.roundness_entry.delete(0, tk.END)
+            self.size_entry.delete(0, tk.END)
+            #フォーカス
+            self.roundness_entry.focus_set()
+            return
+        try:
+            int(self.sharpness_entry.get())
+        except:
+            #クリア
+            self.sharpness_entry.delete(0, tk.END)
+            self.roundness_entry.delete(0, tk.END)
+            self.size_entry.delete(0, tk.END)
+            #フォーカス
+            self.roundness_entry.focus_set()
+            return
+        try:
+            int(self.size_entry.get())
+        except:
+            #クリア
+            self.sharpness_entry.delete(0, tk.END)
+            self.roundness_entry.delete(0, tk.END)
+            self.size_entry.delete(0, tk.END)
+            #フォーカス
+            self.roundness_entry.focus_set()
+            return
+            
         #取得
         self.roundness_lst.append(self.roundness_entry.get())
         self.sharpness_lst.append(self.sharpness_entry.get())
